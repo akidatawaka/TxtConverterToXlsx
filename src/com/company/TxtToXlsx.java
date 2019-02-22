@@ -14,10 +14,12 @@ import java.util.List;
 
 public class TxtToXlsx {
     private String fileName;
+    private String exportFileName;
     private List<String> list;
 
-    public TxtToXlsx(String _fileName) {
-        this.fileName = _fileName;
+    public TxtToXlsx(String fileName, String exportFileName) {
+        this.fileName = fileName;
+        this.exportFileName = exportFileName;
     }
 
     protected void readFileInList() {
@@ -51,7 +53,7 @@ public class TxtToXlsx {
         }
         try
         {
-            FileOutputStream outputStream = new FileOutputStream("Export.xlsx");
+            FileOutputStream outputStream = new FileOutputStream(exportFileName);
             workbook.write(outputStream);
             workbook.close();
         } catch (Exception e)
